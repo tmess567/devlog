@@ -7,3 +7,13 @@ html, body {
 	top: -50px;
 	margin-left: 20px;
 }
+
+.collapsible {
+	margin-top: -20px;
+	clear: both;
+}
+
+.collapsible-body {
+	padding: 10px;
+	padding-left: 20px;
+}
