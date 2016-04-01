@@ -5,3 +5,7 @@ Dev Logs are a great way to let other developers of the community know what you 
 
 https://karandesai-96.github.io/devlog
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/karandesai-96/devlog/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
