@@ -90,6 +90,71 @@
                             My semester exams are held from 22 April to 2 May. Most of my time will be devoted to academics.
                             </li>
                         </ul>
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <td><li><b>Significant work</b></li></td>
+                      <td>
+                        <ul class="details">
+                          <li>
+                            <a href="https://github.com/tardis-sn/tardis/pull/544">
+                              <i class="octicon octicon-git-pull-request"></i><b>#544</b></a>:
+                              Continued CMontecarlo tests refactor on this PR after the previous merge.</li>
+                          <li>
+                            Faced unexpected segfaults in the C tests. The following reasons were assumed to cause the problem (they didn't):
+                            <ul>
+                              <li>
+                                The new enumerates implementation was a problem and that they should be kept as <code>c_ints</code> or <code>c_uints</code>.
+                              </li>
+                              <li>
+                                There might be racing problems in case of multithreading.
+                              </li>
+                              <li>
+                                The <code>ctypes.Structure</code> class would be leaking memory while reassigning a pointer.
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            The conclusion based on these assumptions:
+                            <ul>
+                              <li>
+                                The enumerate implementation was simplified, keeping readability intact - in 
+                                <a href="https://github.com/tardis-sn/tardis/pull/547">
+                                <i class="octicon octicon-git-pull-request"></i><b>#547</b></a>.
+                              </li>
+                              <li>
+                                Tests ran on a single thread, this wasn't a problem.
+                              </li>
+                              <li>
+                                I came to know about the memory leakage from a discussion in ctypes developers forum, but it was outdated. 
+                                To correspoonded to an older version, and this problem isn't existent now.
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            The actual problem and solution:
+                            <ul>
+                              <li>
+                                RKState struct in python implementation had a 'key' member which was a pointer to c_ulong type array.
+                                The C counterpart had a static array declaration, and hence the memory allocated to both Structs was different.
+                              </li>
+                              <li>
+                                <code>mt_state</code> is a struct - so if an instance was declared, it would allocate (4*624 + 4 + 4 + 8) bytes 
+                                in the stack (on 32 bit system) according to C struct. (4*624, 4, 4 and 8 are sizeof <code>key</code>, <code>pos</code>,
+                                <code>has_gauss</code>, <code>gauss</code> in bytes, respectively).
+                                According to python struct, it would be (4 + 4 + 4 + 8) bytes only - as the <code>key</code> is 4 btes long, a pointer
+                                storing the address of the array, which is in heap and not in stack. So wrong memory was accessed everytime/
+                              </li>
+                              <li>
+                                Fix for this problem can be seen in this 
+                                <a href="https://github.com/tardis-sn/tardis/pull/544/commits/6b1855ac36b233d454b91bbefa580abd6223276f">commit</a>.
+                                It modifies the <code>RKState</code> struct implemenation in python.
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </td>
                     </tr>
                   </ul>
                 </table>
