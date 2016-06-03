@@ -72,36 +72,32 @@
             <ul class="collapsible" data-collapsible="expandable">
 
             <li>
+              <!-- keep 'active' in class name for the most recent collapsible view, to keep it in focus when loaded first -->
                 <div class="collapsible-header active waves-effect waves-light indigo darken-2 white-text">
                   <i class="mega-octicon octicon-calendar"></i>
                   <b>25 March - 27 March</b>
                 </div>
               
                   <div class="collapsible-body blue lighten-5">
-                    <table class="daywise-list-container">
-                      <ul>
-                        <tr>
-                          <td><li><b>26 March:</b></li></td>
-                          <td>
-                            <ul class="details">
-                              <li>Set this devlog up. Most of the day was spent in devlog setup and usual academics.</li>
-                              <li>
-                                <a href="https://github.com/tardis-sn/tardis/issues/249">
-                                  <i class="octicon octicon-issue-opened"></i><b>#249</b></a>: 
-                                  Viewed this and found it relevant to C code testing. Also saw some code in <b>test_cmontecarlo.py</b> to understand wrap/ expose technique used.</li>
-                            </ul>
-                        </tr> 
-                        <tr>
-                          <td><li><b>25 March:</b></li></td>
-                            <td>
-                              <ul class="details">
-                              <li>GSoC Proposal Submitted on Melange. 
-                            <a href="https://drive.google.com/file/d/0B84aTiHkSG0QZmhrUEluS1FxZ0E/view?usp=sharing">[Link to Proposal]</a></li>
-                          </ul>
-                      </td>
-                      </tr>
-                    </ul>
-                </table>
+                    <ul class="details">
+                      <li><b>Mon: </b> Some text for Monday. Write in inline verbatim block by enclosing in <code>code tags</code>.
+                      </li>
+                      
+                      <li><b>Tue: </b> Some text for Tuesday. Write a code block by using:
+                        <pre class="codeblock">
+                          # pre tag
+                          def foo():
+                              return "bar"
+                        </pre>
+
+                      <li><b>Wed: </b> Some text for Wednesday. Add a github icon like this:
+                        <i class="octicon octicon-fork"></i>
+                        Subsequently, add a hyperlink to reference a PR like this:
+                        <a href="https://www.github.com/tardis-sn/tardis/pull/544" target="_blank">
+                          <i class="octicon octicon-git-pull-request"></i> #544
+                        </a>
+                      </li>
+                      </ul>
                   </div>
             </li>
 
