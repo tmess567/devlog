@@ -18,14 +18,6 @@ html, body {
 	padding-left: 20px;
 }
 
-.daywise-list-container {
-	width: 100%;
-}
-
-.daywise-list-container tr > *:nth-child(1) {
-	width:15%;
-}
-
 .details li {
 	list-style-type: circle;
 }
