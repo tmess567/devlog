@@ -1,0 +1,23 @@
+[
+	{
+		"date": "13th June",
+		"entries": [
+			"Some text for Monday. Write in inline verbatim block by enclosing in",
+			"Some text for Monday. Write in inline verbatim block by enclosing in"
+		]
+
+	},
+	{
+		"date": "14th June",
+		"entries": [
+			"Some text for Tuesday. Write a code block by using: <pre class='codeblock'> # pre tag def foo(): return 'bar' </pre>"
+		]
+	},
+	{
+		"date": "15th June",
+		"entries": [
+			"Some text for Wednesday. Add a github icon like this: <i class='octicon octicon-fork'></i> Subsequently, add a hyperlink to reference a PR like this: <a href='https://www.github.com/tardis-sn/tardis/pull/544' target='_blank'> <i class='octicon octicon-git-pull-request'></i> #544 </a>"
+		]
+	}
+
+]
