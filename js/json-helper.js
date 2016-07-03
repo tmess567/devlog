@@ -10,20 +10,28 @@ var postContent = "</li>";
 
 var endPosts = "<br/></ul></div></li>";
 
-$.get('posts.json', function(data) {
-	var posts = $.parseJSON( data );
-	var content = "";
-	$.each(posts, function(i, item) {
-		content += (preDate+item.date+postDate);
-		content += (headPosts);
+  var config = {
+    apiKey: "<API-KEY>",
+    authDomain: "<AUTH-DOMAIN>",
+    databaseURL: "<DB-URL>",
+    storageBucket: "",
+  };
+  firebase.initializeApp(config);
 
-		var postsString = "";
-		$.each(item.entries, function(i, item) {
-			content += preContent + item + postContent;
+  firebase.database().ref('posts/').on('value', function(snapshot) {
+	  posts = snapshot.val();
+		var content = "";
+		$.each(posts, function(i, item) {
+			content += (preDate+item.date+postDate);
+			content += (headPosts);
+
+			var postsString = "";
+			$.each(item.entries, function(i, item) {
+				content += preContent + item + postContent;
+			});
+			content += endPosts;
+			$('#postsContainer').append(content);
+			content = "";
 		});
-		content += endPosts;
-		console.log("#############Adding \n"+content );
-		$('#postsContainer').append(content);
-		content = "";
+		$("div.spinner").hide();
 	});
-}); 
